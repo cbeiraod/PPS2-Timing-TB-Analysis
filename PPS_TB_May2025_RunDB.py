@@ -1,6 +1,6 @@
 from typing import Sequence, Tuple, Dict, Optional, List
 from dataclasses import dataclass
-from sensor_hitmaps import SensorSpec
+from sampiclyser.sensor_hitmaps import SensorSpec
 
 lgad_board_10ch_connections = {
     1:[(4,0)],
