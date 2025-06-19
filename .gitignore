@@ -1,0 +1,8 @@
+venv/*
+data/*
+
+*.py[cod]
+__pycache__
+*.feather
+*.parquet
+*.root
