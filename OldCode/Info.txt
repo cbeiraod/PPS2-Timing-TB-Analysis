@@ -1,0 +1,3 @@
+Contents of this subdirectory are not under the repository license.
+
+These files are shared from other sources and each may have their own license associated or do not have any license information attributed. The code is here for reference in case it is needed to recover any old behaviour, but this code should not be relied upon.
