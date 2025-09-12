@@ -1,6 +1,4 @@
-from typing import Sequence, Tuple, Dict, Optional, List
-from dataclasses import dataclass
-from sampiclyser.sensor_hitmaps import SensorSpec
+from db_classes import RunInformation, ConfigInformation
 
 lgad_board_10ch_connections = {
     1:[(4,0)],
@@ -14,38 +12,6 @@ lgad_board_10ch_connections = {
     9:[(3,3)],
     10:[(4,4)],
 }
-
-@dataclass
-class RunInformation:
-    name: str
-    trigger_mode: str
-    trigger_channels: Tuple
-    data_format: str
-    thresholds: Optional[Dict[int, float]] = None
-    comment: Optional[str] = None
-
-@dataclass
-class ConfigInformation:
-    name: str
-    sampic_to_board: Dict[str, Dict[int, int]]
-    bias_voltage: Dict[str, float]
-    power: Dict[str, float]
-    power_connections: Dict[str, Tuple]
-    sampic_amplifiers: Dict[int, str]
-    board_order: List[str]
-
-    def __post_init__(self):
-        self.board_spec = {}
-
-        for board in self.sampic_to_board:
-            self.board_spec[board] = SensorSpec(
-                name=board,
-                sampic_map=self.sampic_to_board[board],
-                geometry=("grouped",
-                        lgad_board_10ch_connections,
-                        5, 5),
-                global_rotation_units=2,
-            )
 
 runs_to_configs = {
     "Run001": "Config1",
@@ -124,6 +90,7 @@ run_config_info = {
     "Config1": ConfigInformation(
         name = "Config 1",
         board_order = ["PPS_LGAD_03", "PPS_TILGAD_AIDA_01"],
+        sensor_channels = lgad_board_10ch_connections,
         sampic_to_board = {
             "PPS_LGAD_03": {0:1, 1:2, 2:8, 6:10, 7:9},
             "PPS_TILGAD_AIDA_01": {3:8, 4:2, 5:1, 8:9, 9:10},
@@ -156,6 +123,7 @@ run_config_info = {
     "Config2": ConfigInformation(
         name = "Config 2",
         board_order = ["PPS_LGAD_03", "PPS_TILGAD_AIDA_01"],
+        sensor_channels = lgad_board_10ch_connections,
         sampic_to_board = {
             "PPS_LGAD_03": {4:1, 1:2, 2:8, 6:10, 7:9},
             "PPS_TILGAD_AIDA_01": {3:8, 0:2, 5:1, 8:9, 9:10},
@@ -188,6 +156,7 @@ run_config_info = {
     "Config3": ConfigInformation(
         name = "Config 3",
         board_order = ["PPS_LGAD_03", "PPS_TILGAD_AIDA_01"],
+        sensor_channels = lgad_board_10ch_connections,
         sampic_to_board = {
             "PPS_LGAD_03": {4:1, 1:2, 2:8, 6:10, 7:9},
             "PPS_TILGAD_AIDA_01": {3:8, 0:2, 5:1, 8:9, 9:10},
@@ -220,6 +189,7 @@ run_config_info = {
     "Config4": ConfigInformation(
         name = "Config 4",
         board_order = ["PPS_LGAD_03", "PPS_TILGAD_AIDA_01"],
+        sensor_channels = lgad_board_10ch_connections,
         sampic_to_board = {
             "PPS_LGAD_03": {0:1, 1:2, 2:8, 6:10, 7:9},
             "PPS_TILGAD_AIDA_01": {3:8, 4:2, 5:1, 8:9, 9:10},
@@ -252,6 +222,7 @@ run_config_info = {
     "Config4a": ConfigInformation(
         name = "Config 4a",
         board_order = ["PPS_LGAD_03", "PPS_TILGAD_AIDA_01"],
+        sensor_channels = lgad_board_10ch_connections,
         sampic_to_board = {
             "PPS_LGAD_03": {0:1, 1:2, 2:8, 6:10, 7:9},
             "PPS_TILGAD_AIDA_01": {3:8, 4:2, 5:1, 8:9, 9:10},
@@ -284,6 +255,7 @@ run_config_info = {
     "Config5": ConfigInformation(
         name = "Config 5",
         board_order = ["PPS_LGAD_03", "PPS_TILGAD_AIDA_01"],
+        sensor_channels = lgad_board_10ch_connections,
         sampic_to_board = {
             "PPS_LGAD_03": {0:1, 1:2, 2:8, 6:10, 7:9},
             "PPS_TILGAD_AIDA_01": {3:8, 4:2, 5:1, 8:9, 9:10},
@@ -316,6 +288,7 @@ run_config_info = {
     "Config6": ConfigInformation(
         name = "Config 6",
         board_order = ["PPS_LGAD_03", "PPS_TILGAD_AIDA_01"],
+        sensor_channels = lgad_board_10ch_connections,
         sampic_to_board = {
             "PPS_LGAD_03": {0:1, 1:2, 2:8, 6:3, 7:9},
             "PPS_TILGAD_AIDA_01": {3:8, 4:2, 5:1, 8:9, 9:3},
@@ -348,6 +321,7 @@ run_config_info = {
     "Config7": ConfigInformation(
         name = "Config 7",
         board_order = ["PPS_LGAD_03", "PPS_TILGAD_AIDA_01"],
+        sensor_channels = lgad_board_10ch_connections,
         sampic_to_board = {
             "PPS_LGAD_03": {0:1, 1:2, 2:8, 6:10, 7:9},
             "PPS_TILGAD_AIDA_01": {3:8, 4:2, 5:1, 8:9, 9:10},
@@ -380,6 +354,7 @@ run_config_info = {
     "Config8": ConfigInformation(
         name = "Config 8",
         board_order = ["PPS_LGAD_03", "PPS_TILGAD_AIDA_01"],
+        sensor_channels = lgad_board_10ch_connections,
         sampic_to_board = {
             "PPS_LGAD_03": {0:1, 1:2, 2:8, 6:10, 7:9},
             "PPS_TILGAD_AIDA_01": {3:8, 4:2, 5:1, 8:9, 9:10},
@@ -412,6 +387,7 @@ run_config_info = {
     "Config9": ConfigInformation(
         name = "Config 9",
         board_order = ["PPS_LGAD_03", "PPS_TILGAD_AIDA_01"],
+        sensor_channels = lgad_board_10ch_connections,
         sampic_to_board = {
             "PPS_LGAD_03": {0:1, 1:2, 2:8, 6:10, 7:9},
             "PPS_TILGAD_AIDA_01": {3:8, 4:2, 5:1, 8:9, 9:10},
@@ -444,6 +420,7 @@ run_config_info = {
     "Config10": ConfigInformation(
         name = "Config 10",
         board_order = ["PPS_LGAD_03", "PPS_TILGAD_AIDA_01"],
+        sensor_channels = lgad_board_10ch_connections,
         sampic_to_board = {
             "PPS_LGAD_03": {0:3, 1:2, 2:8, 6:6, 7:9},
             "PPS_TILGAD_AIDA_01": {3:8, 4:2, 5:3, 8:9, 9:6},
@@ -476,6 +453,7 @@ run_config_info = {
     "Config11": ConfigInformation(
         name = "Config 11",
         board_order = ["PPS_LGAD_03", "PPS_TILGAD_AIDA_01"],
+        sensor_channels = lgad_board_10ch_connections,
         sampic_to_board = {
             "PPS_LGAD_03": {0:3, 1:2, 2:8, 6:6, 7:9},
             "PPS_TILGAD_AIDA_01": {3:8, 4:2, 5:3, 8:9, 9:6},
@@ -508,6 +486,7 @@ run_config_info = {
     "Config12": ConfigInformation(
         name = "Config 12",
         board_order = ["PPS_LGAD_03", "PPS_TILGAD_AIDA_01"],
+        sensor_channels = lgad_board_10ch_connections,
         sampic_to_board = {
             "PPS_LGAD_03": {0:9, 1:8, 2:3, 3:6, 4:2},
             "PPS_TILGAD_AIDA_01": {5:9, 6:8, 7:3, 8:6, 9:2},
@@ -540,6 +519,7 @@ run_config_info = {
     "Config13": ConfigInformation(
         name = "Config 13",
         board_order = ["PPS_LGAD_03", "PPS_TILGAD_AIDA_01"],
+        sensor_channels = lgad_board_10ch_connections,
         sampic_to_board = {
             "PPS_LGAD_03": {0:9, 1:8, 2:3, 3:6, 4:2},
             "PPS_TILGAD_AIDA_01": {5:9, 6:8, 7:3, 8:6, 9:2},
@@ -572,6 +552,7 @@ run_config_info = {
     "Config14": ConfigInformation(
         name = "Config 14",
         board_order = ["PPS_LGAD_03", "PPS_TILGAD_AIDA_01"],
+        sensor_channels = lgad_board_10ch_connections,
         sampic_to_board = {
             "PPS_LGAD_03": {0:9, 1:8, 2:3, 3:6, 11:2},
             "PPS_TILGAD_AIDA_01": {5:9, 6:8, 7:3, 8:6, 9:2},
