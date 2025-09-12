@@ -20,7 +20,7 @@ class ConfigInformation:
     power_connections: Dict[str, Tuple]
     sampic_amplifiers: Dict[int, str]
     board_order: List[str]
-    sensor_channels: Dict[int: List[Tuple]]
+    sensor_channels: Dict[int, List[Tuple]]
 
     def __post_init__(self):
         self.board_spec = {}
