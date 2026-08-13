@@ -6,8 +6,8 @@ from sampiclyser.sensor_hitmaps import SensorSpec
 class RunInformation:
     name: str
     trigger_mode: str
-    trigger_channels: Tuple
     data_format: str
+    trigger_channels: Optional[Tuple] = None
     thresholds: Optional[Dict[int, float]] = None
     comment: Optional[str] = None
 
@@ -22,6 +22,9 @@ class ConfigInformation:
     board_order: List[str]
     sensor_channels: Dict[int, List[Tuple]]
 
+    rotation_units: int = 2
+    flip: bool = False
+
     def __post_init__(self):
         self.board_spec = {}
 
@@ -32,5 +35,6 @@ class ConfigInformation:
                 geometry=("grouped",
                         self.sensor_channels,
                         5, 5),
-                global_rotation_units=2,
+                global_rotation_units=self.rotation_units,
+                global_flip=self.flip,
             )
