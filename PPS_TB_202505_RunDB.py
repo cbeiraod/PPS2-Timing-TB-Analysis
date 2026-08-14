@@ -1,17 +1,4 @@
-from db_classes import RunInformation, ConfigInformation
-
-lgad_board_10ch_connections = {
-    1:[(4,0)],
-    2:[(4,1), (4,2), (3,1), (3,2)],
-    3:[(2,0), (2,1)],
-    4:[(1,1)],
-    5:[(0,0)],
-    6:[(0,3), (1,3), (2,3)],
-    7:[(0,4), (1,4), (2,4), (3,4)],
-    8:[(2,2)],
-    9:[(3,3)],
-    10:[(4,4)],
-}
+from db_classes import RunInformation, ConfigInformation, lgad_board_10ch_connections
 
 runs_to_configs = {
     "Run001": "Config1",
