@@ -17,7 +17,7 @@ class RunInformation:
             if type(self.trigger_channels) == int:
                 tmp = self.trigger_channels
                 self.trigger_channels = tuple(i for i in range(tmp.bit_length()) if (tmp & (1 << i)))
-                print(self.trigger_channels)
+                #print(self.trigger_channels)
 
 @dataclass
 class ConfigInformation:
